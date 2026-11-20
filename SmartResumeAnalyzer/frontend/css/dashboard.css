@@ -707,7 +707,7 @@ textarea:focus-visible {
   font-weight: 600;
 }
 
-.form-field input:not([type="file"]),
+.form-field input,
 .form-field select,
 .form-field textarea {
   width: 100%;
@@ -766,88 +766,6 @@ textarea:focus-visible {
 .form-status.is-error {
   border-color: #e0bcb7;
   color: var(--error);
-}
-
-.upload-zone {
-  min-height: 166px;
-  display: grid;
-  place-items: center;
-  padding: 20px;
-  border: 1px dashed #c9c1b4;
-  border-radius: 5px;
-  background: #fcfbf9;
-  text-align: center;
-}
-
-.upload-zone svg {
-  width: 24px;
-  height: 24px;
-  margin-bottom: 8px;
-  fill: none;
-  stroke: var(--accent);
-  stroke-width: 1.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.upload-zone strong {
-  display: block;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.upload-zone p {
-  margin: 4px 0 12px;
-  color: var(--muted);
-  font-size: 10px;
-}
-
-.file-input {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  clip-path: inset(50%);
-}
-
-.file-input:focus-visible + .upload-zone {
-  outline: 2px solid #6f5c43;
-  outline-offset: 3px;
-}
-
-.file-selected {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  margin-top: 12px;
-  padding: 10px 12px;
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  background: var(--white);
-}
-
-.file-selected[hidden] {
-  display: none;
-}
-
-.file-name {
-  overflow: hidden;
-  color: #5f5a53;
-  font-size: 11px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.text-button {
-  padding: 5px;
-  border: 0;
-  background: transparent;
-  color: var(--error);
-  font-size: 10px;
-  cursor: pointer;
 }
 
 .results-panel {
