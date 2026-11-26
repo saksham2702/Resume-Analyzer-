@@ -1,16 +1,25 @@
 :root {
   color-scheme: light;
-  --paper: #f5f1e9;
-  --white: #fff;
-  --ink: #202020;
-  --muted: #777;
-  --line: #e5e0d7;
-  --serif: "DM Serif Display", Georgia, serif;
-  --sans: "Inter", Arial, sans-serif;
+  --paper: #ffffff;
+  --white: #ffffff;
+  --ink: #111111;
+  --muted: #888888;
+  --line: #e5e5e5;
+  --serif: "Manrope", Arial, sans-serif;
+  --sans: "DM Sans", Arial, sans-serif;
 }
 
 * {
   box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--serif);
 }
 
 html {
@@ -66,7 +75,7 @@ summary:focus-visible {
 .primary-nav a,
 .footer-nav a,
 .back-to-top {
-  color: #555;
+  color: #555555;
   font-size: 13px;
   transition: color 160ms ease, transform 160ms ease;
 }
@@ -83,13 +92,14 @@ summary:focus-visible {
 }
 
 .wordmark {
+  font-family: var(--serif);
   font-size: 19px;
   font-weight: 700;
   letter-spacing: -0.07em;
 }
 
 .wordmark span {
-  color: #8c7657;
+  color: #111111;
 }
 
 .hero {
@@ -111,7 +121,7 @@ summary:focus-visible {
   margin: 0;
   font-family: var(--serif);
   font-size: clamp(54px, 8.3vw, 100px);
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: -0.045em;
   line-height: 0.99;
 }
@@ -119,7 +129,7 @@ summary:focus-visible {
 .hero-copy {
   max-width: 550px;
   margin: 27px 0 0;
-  color: #5e5a54;
+  color: #555555;
   font-size: clamp(16px, 1.8vw, 18px);
   line-height: 1.8;
 }
@@ -155,7 +165,7 @@ summary:focus-visible {
 }
 
 .button-primary:hover {
-  background: #414141;
+  background: #333333;
 }
 
 .button-secondary {
@@ -203,7 +213,7 @@ summary:focus-visible {
   margin: 0;
   font-family: var(--serif);
   font-size: clamp(38px, 5vw, 54px);
-  font-weight: 400;
+  font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1.08;
 }
@@ -211,7 +221,7 @@ summary:focus-visible {
 .about-content {
   max-width: 580px;
   padding-top: 24px;
-  color: #625e58;
+  color: #555555;
 }
 
 .about-content p {
@@ -246,7 +256,7 @@ summary:focus-visible {
 
 .feature-number {
   margin: 0 0 23px;
-  color: #8c7657;
+  color: #111111;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -262,7 +272,7 @@ summary:focus-visible {
 .feature > p:last-child {
   max-width: 310px;
   margin: 0;
-  color: #6d6963;
+  color: #555555;
   font-size: 13px;
   line-height: 1.8;
 }
@@ -320,7 +330,7 @@ summary:focus-visible {
 .faq-item p {
   max-width: 590px;
   margin: -2px 32px 20px 0;
-  color: #6d6963;
+  color: #555555;
   font-size: 13px;
   line-height: 1.8;
 }

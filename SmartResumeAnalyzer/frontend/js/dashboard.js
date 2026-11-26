@@ -9,6 +9,7 @@ let dashboardData = null;
 let resumeRecords = [];
 let resumeDraft = null;
 let resumeAnalysis = null;
+let currentMatchReport = null;
 
 const routeTitles = {
   dashboard: ["Your Workspace", "Everything you need to understand your resume and explore career opportunities."],
@@ -365,7 +366,7 @@ You can write your resume in any structure you prefer.`;
     <div class="editor-layout">
       <section class="panel form-panel document-panel" aria-labelledby="resume-editor-title">
         <h2 id="resume-editor-title">${draft.id ? "Edit Resume" : "Your Resume"}</h2>
-        <p>Your resume is only sent to the connected service when you choose Save or Analyze.</p>
+        <p>Your resume is saved in this browser and sent to Java only when you choose Analyze or Compare.</p>
         <form data-resume-form novalidate>
           <div class="form-field">
             <label for="resume-title">Resume Title</label>
@@ -438,7 +439,7 @@ Include:
 function renderMyResumes() {
   return `${pageHeading("my-resumes")}
     <div class="table-toolbar">
-      <p>Saved resume text is managed by the connected account service.</p>
+      <p>Saved resume text is stored in this browser.</p>
       <a class="button" href="#resume-analyzer" data-new-resume>Create Resume ${icon("arrow")}</a>
     </div>
     <p class="form-status" data-resume-list-status role="status" aria-live="polite"></p>
@@ -801,10 +802,10 @@ pageContent.addEventListener("click", (event) => {
     handleMatchAction(matchAction.dataset.matchId);
   }
   if (event.target.closest("[data-save-match-report]")) {
-    pageContent.querySelector("[data-match-action-status]").textContent =
-      "Report saving is not available until a report service is connected. No report was saved.";
+    saveCurrentMatchReport();
   }
   if (event.target.closest("[data-compare-another]")) {
+    currentMatchReport = null;
     const form = pageContent.querySelector("[data-match-form]");
     form.querySelector("#job-title").value = "";
     form.querySelector("#company-name").value = "";
@@ -897,6 +898,20 @@ async function handleMatchAction(id) {
     dialog.showModal();
   } catch (error) {
     displayError(status, error, "Could not load comparison results.");
+  }
+}
+
+async function saveCurrentMatchReport() {
+  const status = pageContent.querySelector("[data-match-action-status]");
+  try {
+    if (!currentMatchReport) {
+      throw new Error("Run a comparison before saving a report.");
+    }
+    await window.CareerFitService.saveMatchReport(currentMatchReport);
+    status.classList.remove("is-error");
+    status.textContent = "Report saved to Match History.";
+  } catch (error) {
+    displayError(status, error, "Could not save the report.");
   }
 }
 
@@ -1000,6 +1015,7 @@ async function submitMatch(form) {
     const status = form.querySelector("[data-match-status]");
     const resultContainer = pageContent.querySelector("[data-match-results]");
     const emptyState = pageContent.querySelector("[data-match-empty]");
+    currentMatchReport = null;
     resumeError.textContent = resume.value ? "" : "Select a saved resume first.";
     descriptionError.textContent = jobDescription.value.trim() ? "" : "Enter a job description.";
     status.classList.remove("is-error");
@@ -1032,6 +1048,7 @@ async function submitMatch(form) {
           companyName: form.querySelector("#company-name").value.trim(),
           jobDescription: jobDescription.value
         });
+        currentMatchReport = result;
         renderMatchingResults(resultContainer, result && result.results ? result.results : result);
         resultContainer.hidden = false;
         emptyState.hidden = true;

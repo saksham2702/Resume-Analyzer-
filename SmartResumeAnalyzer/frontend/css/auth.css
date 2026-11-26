@@ -1,17 +1,27 @@
 :root {
   color-scheme: light;
-  --paper: #f5f1e9;
-  --white: #fff;
-  --ink: #202020;
-  --muted: #777;
-  --line: #e5e0d7;
-  --error: #a33b32;
-  --serif: "Playfair Display", Georgia, serif;
-  --sans: "Inter", Arial, sans-serif;
+  --paper: #ffffff;
+  --white: #ffffff;
+  --ink: #111111;
+  --muted: #888888;
+  --line: #e5e5e5;
+  --input-border: #d9d9d9;
+  --error: #555555;
+  --serif: "Manrope", Arial, sans-serif;
+  --sans: "DM Sans", Arial, sans-serif;
 }
 
 * {
   box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--serif);
 }
 
 body {
@@ -34,7 +44,7 @@ a {
 a:focus-visible,
 button:focus-visible,
 input:focus-visible {
-  outline: 2px solid #6f5c43;
+  outline: 2px solid #111111;
   outline-offset: 3px;
 }
 
@@ -48,17 +58,18 @@ input:focus-visible {
 }
 
 .wordmark {
+  font-family: var(--serif);
   font-size: 19px;
   font-weight: 700;
   letter-spacing: -0.07em;
 }
 
 .wordmark span {
-  color: #8c7657;
+  color: #111111;
 }
 
 .back-link {
-  color: #5e5a54;
+  color: #555555;
   font-size: 12px;
   transition: color 160ms ease;
 }
@@ -77,10 +88,10 @@ input:focus-visible {
 .auth-card {
   width: min(100%, 456px);
   padding: 38px 42px 32px;
-  border: 1px solid rgba(229, 224, 215, 0.8);
+  border: 1px solid rgba(229, 229, 229, 0.8);
   border-radius: 8px;
   background: var(--white);
-  box-shadow: 0 12px 35px rgba(32, 32, 32, 0.045);
+  box-shadow: 0 12px 35px rgba(17, 17, 17, 0.045);
 }
 
 .card-wordmark {
@@ -101,14 +112,14 @@ input:focus-visible {
   margin: 0;
   font-family: var(--serif);
   font-size: clamp(34px, 8vw, 42px);
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 1.15;
 }
 
 .auth-subtitle {
   margin: 10px 0 27px;
-  color: #6d6963;
+  color: #555555;
   font-size: 13px;
 }
 
@@ -117,8 +128,8 @@ input:focus-visible {
   padding: 9px 11px;
   border: 1px solid var(--line);
   border-radius: 4px;
-  background: #fcfbf9;
-  color: #6d6963;
+  background: #f5f5f5;
+  color: #555555;
   font-size: 10px;
   line-height: 1.5;
 }
@@ -156,13 +167,13 @@ input:focus-visible {
   font-size: 12px;
   font-weight: 600;
   text-decoration: underline;
-  text-decoration-color: #b7ad9e;
+  text-decoration-color: #888888;
   text-underline-offset: 3px;
   transition: color 160ms ease, text-decoration-color 160ms ease;
 }
 
 .text-link:hover {
-  color: #715c40;
+  color: #333333;
   text-decoration-color: currentColor;
 }
 
@@ -175,7 +186,7 @@ input:focus-visible {
   width: 100%;
   min-height: 47px;
   padding: 0 13px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--input-border);
   border-radius: 5px;
   background: var(--white);
   color: var(--ink);
@@ -185,13 +196,13 @@ input:focus-visible {
 }
 
 .form-field input:not([type="checkbox"])::placeholder {
-  color: #a19c94;
+  color: #888888;
 }
 
 .form-field input:not([type="checkbox"]):focus {
-  border-color: #8c7657;
+  border-color: var(--ink);
   outline: none;
-  box-shadow: 0 0 0 2px rgba(140, 118, 87, 0.12);
+  box-shadow: 0 0 0 2px rgba(17, 17, 17, 0.12);
 }
 
 .form-field input[aria-invalid="true"] {
@@ -214,7 +225,7 @@ input:focus-visible {
   transform: translateY(-50%);
   border: 0;
   background: transparent;
-  color: #625e58;
+  color: #555555;
   font: inherit;
   font-size: 11px;
   font-weight: 600;
@@ -241,7 +252,7 @@ input:focus-visible {
   display: inline-flex;
   align-items: flex-start;
   gap: 9px;
-  color: #57534d;
+  color: #555555;
   font-size: 11px;
   line-height: 1.5;
   cursor: pointer;
@@ -276,13 +287,13 @@ input:focus-visible {
 
 .submit-button:hover {
   transform: scale(1.02);
-  background: #414141;
+  background: #333333;
 }
 
 .form-status {
   min-height: 0;
   margin: -7px 0 0;
-  color: #625e58;
+  color: #555555;
   font-size: 12px;
   text-align: center;
 }
@@ -293,7 +304,7 @@ input:focus-visible {
 
 .auth-switch {
   margin: 24px 0 0;
-  color: #6d6963;
+  color: #555555;
   font-size: 12px;
   text-align: center;
 }
@@ -315,24 +326,24 @@ input:focus-visible {
 .strength-meter span {
   height: 3px;
   border-radius: 2px;
-  background: #ebe8e2;
+  background: #e5e5e5;
   transition: background-color 160ms ease;
 }
 
 .strength-meter[data-level="1"] span:nth-child(-n+1) {
-  background: #b85b4f;
+  background: #888888;
 }
 
 .strength-meter[data-level="2"] span:nth-child(-n+2) {
-  background: #b98a4e;
+  background: #555555;
 }
 
 .strength-meter[data-level="3"] span:nth-child(-n+3) {
-  background: #8b9560;
+  background: #333333;
 }
 
 .strength-meter[data-level="4"] span:nth-child(-n+4) {
-  background: #667653;
+  background: #111111;
 }
 
 .password-strength {

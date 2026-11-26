@@ -2,10 +2,10 @@
 
 window.CareerFitApi = {
   async request(path, options) {
-    const baseUrl = window.CAREERFIT_API_BASE_URL;
-    if (!baseUrl) {
-      throw new Error("CareerFit API URL has not been configured.");
-    }
+    const baseUrl = window.CAREERFIT_API_BASE_URL ||
+      (window.location.protocol === "http:" || window.location.protocol === "https:"
+        ? window.location.origin
+        : "http://127.0.0.1:8080");
 
     const url = new URL(path.replace(/^\/+/, ""), `${baseUrl.replace(/\/+$/, "")}/`);
     const response = await fetch(url, {
@@ -17,7 +17,18 @@ window.CareerFitApi = {
     });
 
     if (!response.ok) {
-      throw new Error(`CareerFit API request failed with status ${response.status}.`);
+      let message = `CareerFit API request failed with status ${response.status}.`;
+      try {
+        const errorResponse = await response.json();
+        if (errorResponse && typeof errorResponse.error === "string" && errorResponse.error.trim()) {
+          message = errorResponse.error;
+        }
+      } catch (error) {
+        if (!(error instanceof SyntaxError)) {
+          throw error;
+        }
+      }
+      throw new Error(message);
     }
 
     if (response.status === 204) {
